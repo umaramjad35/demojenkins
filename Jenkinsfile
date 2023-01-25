@@ -62,6 +62,10 @@ pipeline{
                 echo "======== executing deployment on production server ========"
                 sh 'bash script.sh'
                 echo "code deployed to Production successfully"
+                sh '''ls
+                pwd
+                cat testing.text
+                '''
             }            
         }
     }
