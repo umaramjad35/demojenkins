@@ -6,9 +6,9 @@ pipeline{
         name = 'umar'
     }
     parameters{
-        string(name: 'person', defaultvalue: 'umar amjad', description:'What is your name?')
+        string(name: 'person', defaultValue: 'umar amjad', description:'What is your name?')
         choice(name: 'gender', choices: ['Male','Female'], description:'')
-        booleanPeram(name: 'Pakistani', defaultvalue: true, description:'')
+        booleanParam(name: 'Pakistani', defaultValue: true, description:'')
     }
     stages{
         stage("executing linux commands"){
