@@ -1,0 +1,70 @@
+pipeline {
+    agent any
+    environment {
+        name = 'umar'
+    }
+    parameters {
+        string(name: 'person', defaultValue: 'umar amjad', description: 'who are you?')
+        booleanParam(name: 'is Male', defaultValue: true, description: '' )
+        choice(name: 'City', choices: ['Lahore', 'Karachi', 'Islamabad'], description: '' )
+    }
+
+    stages {
+        stage('running a command') {
+            steps {
+                sh 'date'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'testing...'
+                sh 'pwd'
+            }
+        }
+        stage('envoirment variable') {
+            environment {
+                username = 'amjad'
+            }
+            steps {
+                sh 'echo "${BUILD_ID}"'
+                sh 'echo "${name}"'
+                sh 'echo "${person}"'
+                sh 'echo "your full name is ${person} ${username}"'
+            }
+        }
+        stage('deploy to test') {
+            steps {
+                echo 'deploying on test server...'
+                sh 'cal 2023'
+            }
+        }
+        stage('user input') {
+            input{
+                message "Should we continue?"
+                ok "yes we should"
+            }
+            steps {
+                sh 'date'
+            }
+        }
+        stage('deploy to prod') {
+            steps {
+                sh 'echo "${name}"'
+                sh 'echo "${username}"'
+                echo 'deploy on production server...'
+                sh 'ls'
+            }
+        }
+    }
+    post {
+        always {
+            echo "Post action has been triggered"
+        }
+        failure {
+            echo "Pipeline failed"
+        }
+        success {
+            echo "Pipeline successfully executed"
+        }
+    }
+}
