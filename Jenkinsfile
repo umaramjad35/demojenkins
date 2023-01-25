@@ -6,9 +6,9 @@ pipeline{
         name = 'umar'
     }
     parameters{
-        string(name: 'person', defaultValue: 'umar amjad', description:'What is your name?')
+        string(name: 'person', defaultvalue: 'umar amjad', description:'What is your name?')
         choice(name: 'gender', choices: ['Male','Female'], description:'')
-        booleanParam(name: 'Pakistani', defaultValue: true, description:'')
+        booleanPeram(name: 'Pakistani', defaultvalue: true, description:'')
     }
     stages{
         stage("executing linux commands"){
@@ -29,13 +29,16 @@ pipeline{
             steps{
                 echo "======== executing linux environmnet variables ========"
                 sh 'echo "${username}"'
+                sh 'echo "Your full name is ${person}" ${username}'
             }
             
         }
         stage("executing Parameters"){
             steps{
                 echo "======== executing linux parameters ========"
-                sh 'echo "Your full name is ${person} ${username}"'
+                sh 'echo "The gender of the user is "${gender}"'
+                sh 'echo "The user is  pakistani"${Pakistani}"'
+
             }
             
         }
@@ -62,10 +65,6 @@ pipeline{
                 echo "======== executing deployment on production server ========"
                 sh 'bash script.sh'
                 echo "code deployed to Production successfully"
-                sh '''ls
-                pwd
-                cat testing.text
-                '''
             }            
         }
     }
