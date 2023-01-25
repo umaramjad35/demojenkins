@@ -68,7 +68,7 @@ pipeline{
                 sh ''' ls
                 cat testing.text
                 '''
-                sh 'echo "the total number of lines in testing file are: ${wc -l < testing.text}"' 
+                echo "the total number of lines in testing file are: sh 'wc -l < testing.text'" 
             }            
         }
     }
