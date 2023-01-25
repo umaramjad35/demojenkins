@@ -35,7 +35,7 @@ pipeline{
         stage("executing Parameters"){
             steps{
                 echo "======== executing linux parameters ========"
-                sh 'echo "Your full name is ${person}" ${username}'
+                sh 'echo "Your full name is ${person} ${username}"'
             }
             
         }
