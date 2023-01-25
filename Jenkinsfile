@@ -29,15 +29,15 @@ pipeline{
             steps{
                 echo "======== executing linux environmnet variables ========"
                 sh 'echo "${username}"'
-                sh 'echo "Your full name is ${person}" ${username}'
+                sh 'echo "Your full name is ${person} ${username}"'
             }
             
         }
         stage("executing Parameters"){
             steps{
                 echo "======== executing linux parameters ========"
-                sh 'echo "The gender of the user is "${gender}"'
-                sh 'echo "The user is  pakistani"${Pakistani}"'
+                sh 'echo "The gender of the user is ${gender}"'
+                sh 'echo "The user is  pakistani ${Pakistani}"'
 
             }
             
